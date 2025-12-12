@@ -1,0 +1,79 @@
+:root {
+    --primary: #2563eb;    /* Modernes Blau */
+    --success: #16a34a;    /* Grün */
+    --danger: #dc2626;     /* Rot */
+    --bg: #f1f5f9;         /* Heller Hintergrund */
+    --login: linear-gradient(to right, #43cea2, #185a9d);
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --border: #e2e8f0;
+}
+
+body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; height: 100vh; }
+* { box-sizing: border-box; }
+
+/* UTILS */
+.hidden { display: none !important; }
+.full-width { width: 100%; }
+
+/* LOGIN */
+.overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--login); display: flex; justify-content: center; align-items: center; z-index: 100; }
+.login-box { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; width: 90%; max-width: 400px; }
+.login-box input { width: 100%; padding: 12px; margin: 15px 0; border: 2px solid var(--border); border-radius: 8px; font-size: 1.1rem; text-align: center; }
+
+/* LAYOUT */
+.top-bar { background: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+.main-grid { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 20px; padding: 20px; height: calc(100vh - 60px); }
+
+/* KARTEN DESIGN */
+.card { background: var(--card-bg); border-radius: 12px; padding: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); display: flex; flex-direction: column; overflow: hidden; }
+.card h3 { margin-top: 0; border-bottom: 2px solid var(--bg); padding-bottom: 10px; color: #475569; }
+
+/* SPALTE 1: FAVORITEN */
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+.fav-grid { display: flex; flex-wrap: wrap; gap: 8px; overflow-y: auto; align-content: flex-start; }
+.fav-btn { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; gap: 5px; }
+.fav-btn:hover { background: #dbeafe; transform: translateY(-1px); }
+.fav-del { font-size: 0.8em; color: var(--danger); opacity: 0.5; margin-left: 5px; }
+.fav-del:hover { opacity: 1; }
+
+/* SPALTE 2: EINKAUFSLISTE */
+.sticky-input-area { background: var(--card-bg); z-index: 10; padding-bottom: 10px; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
+.input-group { display: flex; gap: 10px; }
+.qty-input { width: 60px; text-align: center; padding: 10px; border: 1px solid var(--border); border-radius: 8px; font-weight: bold; }
+#itemInput { flex-grow: 1; padding: 10px; border: 1px solid var(--border); border-radius: 8px; }
+
+.shopping-list { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex-grow: 1; }
+.shopping-list li { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+.shopping-list li:hover { background: #f8fafc; }
+.shopping-list li.checked .item-text { text-decoration: line-through; color: #94a3b8; }
+
+.item-left { display: flex; align-items: center; gap: 10px; cursor: pointer; flex-grow: 1; }
+.badge { background: var(--primary); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.85rem; font-weight: bold; min-width: 30px; text-align: center; }
+
+.list-actions { margin-top: auto; padding-top: 15px; display: flex; gap: 10px; }
+.list-actions button { flex: 1; }
+
+/* SPALTE 3: GESPEICHERT */
+.saved-list-ul { list-style: none; padding: 0; overflow-y: auto; }
+.saved-list-ul li { padding: 10px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; justify-content: space-between; }
+.saved-list-ul li:hover { background: #f1f5f9; }
+
+/* BUTTONS */
+button { cursor: pointer; border: none; font-family: inherit; }
+.btn-primary { height: 2rem; background: var(--primary); color: white; border-radius: 8px; font-weight: bold; transition: background 0.2s; }
+.btn-primary:hover { background: #1d4ed8; }
+.btn-secondary { background: #64748b; color: white; padding: 10px; border-radius: 8px; }
+.btn-danger { background: var(--danger); color: white; padding: 10px; border-radius: 8px; }
+.btn-small { background: transparent; border: 1px solid var(--border); padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+.btn-text { background: none; color: #64748b; font-weight: bold; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .main-grid { grid-template-columns: 1fr; height: auto; }
+    .card { height: auto; min-height: 300px; }
+    /* Reihenfolge ändern: Liste oben, dann Favoriten */
+    .favorites-card { order: 2; }
+    .list-card { order: 1; }
+    .saved-card { order: 3; }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smarte Einkaufsliste</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+
+    <div id="loginView" class="overlay active">
+        <div class="login-box">
+            <h1>👋 Hallo!</h1>
+            <p>Wer kauft heute ein?</p>
+            <input type="text" id="usernameInput" placeholder="Dein Name (z.B. Loris)" autofocus>
+            <button onclick="App.login()" class="btn-primary full-width">Starten</button>
+        </div>
+    </div>
+
+    <div id="appView" class="hidden">
+        <header class="top-bar">
+            <div class="user-info">
+                <span>Eingeloggt als: <b id="displayUser">Gast</b></span>
+            </div>
+            <button onclick="App.logout()" class="btn-text">Abmelden 🚪</button>
+        </header>
+
+        <div class="main-grid">
+            
+            <aside class="card favorites-card">
+                <div class="card-header">
+                    <h3>⭐ Schnellwahl</h3>
+                    <button onclick="App.addFavoritePrompt()" class="btn-small">+ Neu</button>
+                </div>
+                <div id="favContainer" class="fav-grid">
+                    </div>
+            </aside>
+
+            <main class="card list-card">
+                <div class="sticky-input-area">
+                    <h3>🛒 Einkaufsliste</h3>
+                    <div class="input-group">
+                        <input type="number" id="qtyInput" value="1" min="1" class="qty-input">
+                        <input type="text" id="itemInput" placeholder="Produkt eingeben...">
+                        <button onclick="App.addItemManual()" class="btn-primary big-plus">+</button>
+                    </div>
+                </div>
+
+                <ul id="shoppingList" class="shopping-list">
+                    </ul>
+
+                <div class="list-actions">
+                    <button onclick="App.saveList()" class="btn-secondary">💾 Liste Speichern</button>
+                    <button onclick="App.clearList()" class="btn-danger">🗑️ Alle Löschen</button>
+                </div>
+            </main>
+
+            <aside class="card saved-card">
+                <h3>📂 Meine Listen</h3>
+                <ul id="savedListContainer" class="saved-list-ul">
+                    </ul>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
