@@ -1,5 +1,8 @@
 # 🛒 Modul 346 - Einkaufslisten-Webapplikation mit Datenbankanbindung
 
+## Wichtig
+In der Datei app.js die Baseurl abändern.
+
 ## 📋 Beschreibung
 Abschlussprojekt für Modul 346: Eine moderne Webapplikation zur Verwaltung von Einkaufslisten mit automatisierter Cloud-Infrastruktur.
 
@@ -45,4 +48,5 @@ terraform apply
 | 0.5 | 04.12.2025 | Terraform Code |
 
 ## 👥 Team
+
 Loris Foltzer, Tyler Zaugg, Noel Abgottspon
