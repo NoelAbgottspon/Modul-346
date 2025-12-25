@@ -1,6 +1,6 @@
 // --- KONFIGURATION ---
 // ÄNDERE DIESE IP nach dem Terraform Apply! (Beispiel: 'http://3.123.45.67:3000')
-const API_BASE = 'http://DEINE-EC2-PUBLIC-IP-HIER-EINTRAGEN:3000'; 
+const API_BASE = 'REPLACE_ME_API_URL';
 
 const App = {
     user: null,
@@ -228,5 +228,6 @@ const App = {
 
 document.getElementById('usernameInput').addEventListener('keypress', e => { if(e.key === 'Enter') App.login() });
 document.getElementById('itemInput').addEventListener('keypress', e => { if(e.key === 'Enter') App.addItemManual() });
+
 
 App.init();
